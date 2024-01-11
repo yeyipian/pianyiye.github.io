@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>弱点 | 我是叶一片</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg"><!-- index.css--><link rel="stylesheet" href="/css/index.css"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><link rel="stylesheet" href="/lib/snackbar.min.css"><!-- comment--><!-- pace 胶囊加载条(Capsule loading bar)--><script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script><!-- search--><!-- aplayer--><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"><!-- echarts--><!-- 灰色纪念日(Gray Anniversary)--><!-- Open Graph--><meta name="description" content="&amp;amp;emsp;&amp;amp;emsp;昨天看了一部电影，英文名叫 The blind side，这个词出自橄榄球里面，可以解释为“四分卫左侧区域”(在橄榄球里代表一个选手视线外的地方。 准备传球的四分卫的左手边跑锋带球的右后方)，而中文把他翻译为弱点，这也是我昨天看电影时不能理解到的地方，而不去解释为橄榄球里面"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        }
+
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
+
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
+    }
+)(window)
+
+console.log(
+    "%c🔥 程序：Hexo | 主题：Hexo-Theme-Solitude | 作者：王卓Sco、亦封 | Github: https://github.com/DuoSco/Hexo-theme-solitude | 版本：v1.3.0 😄",
+    "color: #fff; background: linear-gradient(-25deg, #a8edea, #fed6e3); padding: 8px 15px; border-radius: 8px; text-shadow: 2px 2px 4px white; color: black;"
+);
+</script><div><script src="/js/utils.js"></script><script src="/js/main.js"></script></div><!-- custom inject--><link rel="stylesheet" href="/css/custom.css"><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2022-10-17 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.png'
+    },
+    hightlight: {
+        enable: true,
+        limit: 200,
+        expand: false,
+        copy: true,
+    },
+    lightbox: false,
+    randomlinks: false,
+    lang: {
+        theme: {
+            dark: '已切换至深色模式',
+            light: '已切换至浅色模式',
+        },
+        copy: {
+            success: '复制成功',
+            error: '复制失败',
+        },
+        backtop: '返回顶部',
+        time: {
+            recent: '最近',
+            yesterday: '昨天',
+            berforeyesterday: '前天',
+            daybefore: '天前',
+            runtime: '天',
+        },
+        sayhello: {
+            morning: `一日之计在于晨`,
+            noon: `吃饱了才有力气干活`,
+            afternoon: `集中精力，攻克难关`,
+            night: `不要太劳累了，早睡更健康`,
+            goodnight: `睡个好觉，保证精力充沛`,
+        },
+        search: {
+            empty: '找不到你查询的内容：${query}',
+            hit: '找到 ${hits} 条结果，用时 ${time} 毫秒',
+            placeholder: '输入关键词快速查找',
+        }
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {
+        enable: false,
+        type: '',
+        commentBarrage: true,
+        randomInfoStart: ["聪敏的","可爱的","美丽的"],
+        randomInfoEnd: ["白菜","小可爱","小仙女"],
+        twikoo: {
+            url: '',
+            accessToken: ''
+        },
+        waline: {
+            url: '',
+        }
+    },
+    rightside: {
+        enable: false
+    },
+    ai:{
+        enable: false,
+        key: '',
+        talk: '我是王卓Sco开发的摘要生成助理ScoGPT，ScoGPT在静态部署时进行摘要的撰写，并且在访客访问时通过ScoCorrection转译后的文本摘要实现工具。我在这里只负责已经生成的摘要显示，你无法与我直接沟通，但我可以回答一些预设的问题。',
+        randomPost: false,
+    },
+    music:{
+        enable: false,
+    }
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body id="body"><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="loading image"></div></div><script>const preloader = {
+    endLoading: () => {
+        document.getElementById('loading-box').classList.add('loaded');
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+    },
+    removePaceDone: () => {
+        document.getElementById('body').classList = 'pace-done';
+    }
+}
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});</script><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="scoicon sco-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换" href="javascript:void(0);"><i class="scoicon sco-moon-clear-fill"></i></a></div><div class="console-btn-item" id="consoleHideAside"><a class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制" href="javascript:void(0);"><i class="scoicon sco-side-bar-fill"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><a class="music-switch" title="音乐开关" href="javascript:void(0);"><i class="scoicon sco-disc-fill"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><a class="commentBarrage"><i class="scoicon sco-chat-fill"></i></a></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()" href="javascript:void(0);"><i class="scoicon sco-moon-clear-fill"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">我的其他</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://yeyipian.top/" title="主页"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="我的其他"><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://weibo.com/u/3284991491" title="微博"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e2ac458853aefca138d.png" alt="我的其他"><span class="back-menu-item-text">微博</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh" title="抖音"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e93c458853aefcbb2cc.png" alt="我的其他"><span class="back-menu-item-text">抖音</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://space.bilibili.com/87607674" title="b站"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e5dc458853aefcaf37b.png" alt="我的其他"><span class="back-menu-item-text">b站</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E7%BC%96%E7%A8%8B/">编程<sup>22</sup></a><a href="/tags/Docker/">Docker<sup>1</sup></a><a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化<sup>3</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8A%80%E6%9C%AF/">服务端技术<sup>8</sup></a><a href="/tags/java/">java<sup>8</sup></a><a href="/tags/Cookie/">Cookie<sup>2</sup></a><a href="/tags/Session/">Session<sup>2</sup></a><a href="/tags/Superset/">Superset<sup>1</sup></a><a href="/tags/Hadoop/">Hadoop<sup>6</sup></a><a href="/tags/Hive/">Hive<sup>5</sup></a><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/">大数据平台核心技术<sup>6</sup></a><a href="/tags/ECharts/">ECharts<sup>3</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/">前端<sup>3</sup></a><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">大数据可视化<sup>3</sup></a><a href="/tags/Flex/">Flex<sup>1</sup></a><a href="/tags/MVC/">MVC<sup>1</sup></a><a href="/tags/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构<sup>1</sup></a><a href="/tags/MongoDB/">MongoDB<sup>1</sup></a><a href="/tags/%E5%B0%8F%E7%B1%B3%E5%A6%99%E6%83%B3/">小米妙想<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">数据集群<sup>2</sup></a><a href="/tags/Spark/">Spark<sup>2</sup></a><a href="/tags/datax-web/">datax-web<sup>1</sup></a><a href="/tags/butterfly/">butterfly<sup>2</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/jsp/">jsp<sup>1</sup></a><a href="/tags/kettle/">kettle<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据<sup>1</sup></a><a href="/tags/%E6%91%84%E5%BD%B1/">摄影<sup>3</sup></a><a href="/tags/tensorflow/">tensorflow<sup>1</sup></a><a href="/tags/pycharm/">pycharm<sup>1</sup></a><a href="/tags/request/">request<sup>1</sup></a><a href="/tags/response/">response<sup>1</sup></a><a href="/tags/%E5%88%86%E4%BA%AB/">分享<sup>6</sup></a><a href="/tags/%E7%96%AB%E6%83%85/">疫情<sup>2</sup></a><a href="/tags/%E6%88%91/">我<sup>4</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/">面试<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/%E6%97%85%E8%A1%8C/">旅行<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>2</sup></a><a href="/tags/Hbase/">Hbase<sup>2</sup></a><a href="/tags/%E7%94%B5%E5%BD%B1/">电影<sup>1</sup></a><a href="/tags/%E6%BC%94%E5%87%BA/">演出<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器<sup>1</sup></a><a href="/tags/servlet/">servlet<sup>1</sup></a><a href="/tags/%E8%BF%87%E6%BB%A4%E5%99%A8/">过滤器<sup>1</sup></a><a href="/tags/%E7%9B%91%E5%90%AC%E5%99%A8/">监听器<sup>1</sup></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon scoicon sco-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">我的其他</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://yeyipian.top/" title="主页"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="我的其他"><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://weibo.com/u/3284991491" title="微博"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e2ac458853aefca138d.png" alt="我的其他"><span class="back-menu-item-text">微博</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh" title="抖音"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e93c458853aefcbb2cc.png" alt="我的其他"><span class="back-menu-item-text">抖音</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://space.bilibili.com/87607674" title="b站"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e5dc458853aefcaf37b.png" alt="我的其他"><span class="back-menu-item-text">b站</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页" target="_self"><span class="scoicon">叶一片</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">弱点</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button"><a class="site-page" href="https://www.travellings.cn/go.html" title="开往-友链接力" target="_blank"><i class="scoicon sco-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);"><i class="scoicon sco-signal-tower-fill"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);"><i class="scoicon sco-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="scoicon sco-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="scoicon sco-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://pic.imgdb.cn/item/64a94b171ddac507cc38b9d6.jpg" alt="弱点"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/思考思索/">思考思索</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%86%E4%BA%AB/"><span class="tags-name tags-punctuation">分享</span></a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%BD%B1/"><span class="tags-name tags-punctuation">电影</span></a></div></div></div></div><h1 class="post-title">弱点</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="meta_posted 2022-11-26 16:17:21"><i class="post-meta-icon scoicon sco-calendar-todo-fill"></i><time datetime="2022-11-26T08:17:21.000Z">2022-11-26T08:17:21.000Z</time></span><span class="post-meta-date" title="meta_updated 2023-08-28 15:33:04"><i class="post-meta-icon scoicon sco-refresh-line"></i><time datetime="2023-08-28T07:33:04.942Z">2023-08-28T07:33:04.942Z</time></span><span class="post-meta-position" title="作者IP归属地为广东"><i class="post-meta-icon scoicon sco-map-pin-fill"></i><span>广东</span></span><a class="post-meta-pv" href="/2022/11/26/%E5%BC%B1%E7%82%B9/" title="文章热度"><i class="post-meta-icon scoicon sco-fire-fill"></i><span id="busuanzi_value_page_pv"><i class="scoicon sco-loading-line"></i></span></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><img src="https://pic.imgdb.cn/item/6381cdea16f2c2beb196e198.png"></p>
+<p>&emsp;&emsp;昨天看了一部电影，英文名叫 <strong>The blind side</strong>，这个词出自橄榄球里面，可以解释为“四分卫左侧区域”<font size="2px">(在橄榄球里代表一个选手视线外的地方。 准备传球的四分卫的左手边跑锋带球的右后方)</font>，而中文把他翻译为<strong>弱点</strong>，这也是我昨天看电影时不能理解到的地方，而不去解释为橄榄球里面“盲区，盲点”的意思。<br>&emsp;&emsp;Blind Side 这个电影改编自原著 BLIND SIDE:EVOLUTION OF THEGAME BY MICHAEL LEWIS<font size="2px"> (《弱点:进化》: 克尔·刘易斯的《游戏的演变》)</font>。 这本书讲的就是主人公MICHAEL OHER迈克尔·奥赫尔的心路历程。得知故事是来源于真实故事的，并且现实生活的主人公在 16 年也随黑豹打进超级碗。<br>&emsp;&emsp;里面讲的主要内容大概是一个十七岁的<strong>黑人被富有白人收养</strong>中发生的一些故事。<br>&emsp;&emsp;迈克尔是一个黑人，还是一个从小就无法正常保证生活的人，母亲吸毒子女众多;父亲死在天桥上，甚至都不知道是他杀还是自杀。迈克尔的苦难生活可见一斑<br>&emsp;&emsp;而利·安妮·陶西是一个白人，甚至可以说是上流社会:丈夫陶西先生拥有钟塔和众多餐馆。安妮是一个设计师，且夫妇都毕业于密西西比大学。<br>&emsp;&emsp;两个种族、两个阶层的人，为什么能够产生如此密切的联系，成为一家人。<br>&emsp;&emsp;有一点我印象很深，安妮跟上流夫人一起聚会的时候讲到了收养迈克尔的话题。其他夫人都很惊讶，都觉得安妮在开玩笑，甚至还拿了安妮去世五年的父亲来提醒她为什么这群上流社会的人会表示惊讶?因为迈克尔是一个黑人，而且是一个学习能力不行智商只有六岁的黑人，而陶西先生一家是有名声的家庭。</p>
+<h1 id="第一个盲点出现了，歧视"><a href="#第一个盲点出现了，歧视" class="headerlink" title="第一个盲点出现了，歧视"></a>第一个盲点出现了，歧视</h1><p>&emsp;&emsp;上流社会的人瞧不起底层人民，白人歧视黑人。那些高傲的白人可以把安妮对迈克尔的帮助说成是一种白人对黑人的愧疚。</p>
+<p>&emsp;&emsp;这个世界存在歧视，这就是这个影片的第一个盲点。</p>
+<p>&emsp;&emsp;那么这和弱点有什么关系?</p>
+<p>&emsp;&emsp;虽然安妮被这群人一说，但是她并没有放弃迈克尔，她会尊重他。迈克尔说不喜欢别人叫他 Big Mike,所以安妮只会叫他迈克尔,在丈夫 BigMike 的时候，还会特意强调让丈夫叫迈克尔。<br>&emsp;&emsp;陶西一家人都没有嫌弃迈克尔或者说瞧不起他<br>&emsp;&emsp;他们一家人突破外界的眼光，邀请迈克尔一起拍全家福，一起过感恩节，并且还收养了他。<br>&emsp;&emsp;他们突破了这种固有的偏见，让歧视的盲点变成一个人心的弱点。<br>&emsp;&emsp;之所以是弱点，是因为想要突破固有的偏见需要很大的勇气和毅力。</p>
+<h1 id="之后第二个盲点是信任"><a href="#之后第二个盲点是信任" class="headerlink" title="之后第二个盲点是信任"></a>之后第二个盲点是信任</h1><p>&emsp;&emsp;迈克尔选择了密西西比大学之后，被 NCAA (全国大学生体育协会)找上门，他们怀疑陶西夫妇鼓吹迈克尔进入密西西比大学,怀疑他们收养迈克尔只是为了向母校培养人才。<br>&emsp;&emsp;迈克尔也怀疑了。<br>&emsp;&emsp;人与人之间的信任不堪一击。这是另一个盲点。</p>
+<p>&emsp;&emsp;当迈克尔选择相信陶西夫妇的时候，这种盲点就变成了弱点。</p>
+<p>&emsp;&emsp;人与人之间有信任，只不过容易坍塌。</p>
+<h1 id="第三个盲点就是片里提及的，保护意识"><a href="#第三个盲点就是片里提及的，保护意识" class="headerlink" title="第三个盲点就是片里提及的，保护意识"></a><strong>第三个盲点就是片里提及的，保护意识</strong></h1><p>&emsp;&emsp;迈克尔带安妮回自己的黑人区拿衣物”的时候,他要求安妮在车上不许下来。</p>
+<p>&emsp;&emsp;安妮的儿子 SJ 和迈克尔开车在街上时发生了严重车祸，医生也震惊儿子只是轻微擦伤。<br>&emsp;&emsp;在橄榄球训练的时候，安妮和迈克尔说了一通，迈克尔激活了自己的意识。</p>
+<p>&emsp;&emsp;很多都和刚开始迈克尔做的测试有着密切关系一一自我保护意识98 分。</p>
+<p>&emsp;&emsp;那么也就是说迈克尔习惯在自己的世界，不相信任何人。</p>
+<p>&emsp;&emsp;这是他本身对世界的一个盲点。</p>
+<p>&emsp;&emsp;那么在陶西一家的照顾下，他慢慢敞开心扉，学会去信任别人。<br>&emsp;&emsp;他开始信任陶西一家人，开始信任队友。<br>&emsp;&emsp;把他认为所有的亲人、朋友都会放在第一位，而他一旦开始信任这个世界这种盲点就变成了他的弱点,所以在得知陶西夫妇对他的好可能是别有所图的时候才会心灰意冷。<br>&emsp;&emsp;迈克尔在电影里有这么一段独白。<br>&emsp;&emsp;只能自己给自己鼓励，不能总是按别人说的去做。有时，你甚至连为什么要这样做都分不清楚，任何的责任都可以让人振奋。但是，荣誉，那才是让你决定做还是不做一件事的原因。关键是你是什么人，还有就是你想成为什么样的人。</p>
+<p>&emsp;&emsp;看完整个影片，我完全能理解为什么是“弱点”而不是“盲点”</p>
+<p>&emsp;&emsp;<strong><font color="darkred">弱点，只是不精通、不擅长;</font></strong></p>
+<p><strong>&emsp;&emsp;<font color="darkred">而盲点，是完全看不见</font></strong><br>&emsp;&emsp;重新回到 Blind Side 这个话题上。橄榄球场有盲点，难道我们人类自身没有盲点吗?不但我们开车的时候看反光镜的时候有盲点，我们人性也有盲点。在遇到陶西一家之前,迈克尔的盲点就是他能打橄榄球而不是整天游荡不知道该做什么。<br>&emsp;&emsp;影片最后,Sandra Bullock 说的那些话让人深思。<strong>那些游荡在美国街头各个角落的黑人青少年，他们都拥有各种各样的天赋，他们却没有意识到那些。</strong><br>&emsp;&emsp;枪击案，抢劫案，于此联系上的不少都是一些拥有运动能力的黑人青年。可是人看不到自己的盲点,他们需要其他人帮助他们才能看到。迈克尔是一个幸运的人,但是社会上还有多少个迈克尔在等待着其他人来看到他们的 BLIND SIDE呢?</p>
+<p>&emsp;&emsp;《弱点》这个电影里传递出的美国价值观是<strong>动机大于结果</strong>。你养育了我二十年是事实，但你别有用心，那咱俩就一笔勾销，而且你还倒欠我。</p>
+<p>&emsp;&emsp;而成龙大哥早年的电影《少林木人巷》为代表的电影传递出的中国价值观就是，<strong>结果大于动机</strong>。哪怕你刀我全家，恶贯满盈，但只要你曾对我好过，我就不能杀你，还得供着你。<br>&emsp;&emsp;正如《弱点》里的剧情冲突，不同价值观熏陶下的美国人和中国人，处理问题有着完全不同的思路。<br>而年轻的我，心底里曾经坚信不疑的某些东西，第一次裂开了一条缝今年真的发生了很多事，都在赤裸裸的告诉我:我是下一个。<br><font size="2px">“脱口秀是舶来品”“部分居民自防自救能力弱”“广州没有静默的安排”“对消防通道不熟悉”“吴亦凡一审被判十三年!”</font></p>
+<p>&emsp;&emsp;我的盲点是什么?<br><strong>&emsp;&emsp;无能</strong><br>&emsp;&emsp;评论精选，已被删除，写到这身体已经麻木，本是观后感，写着写着就控制不住，意识摧残大脑，身体感觉在摇晃，闭上眼也仿佛有人在说话.</p>
+<p>&emsp;&emsp;我选择听话，我明白自救，皎洁的月光配合着星星之火.</p>
+<p>&emsp;&emsp;每一个 404 的背后都可以不为人知，我们都在一栋楼里.</p>
+<p>&emsp;&emsp;山城也愈演愈烈，从千次计变为万次计，市民也在楼下“混乱”</p>
+<p>&emsp;&emsp;欸，我还知道*提出了采取群众路线的方法。</p>
+<p>&emsp;&emsp;迈克尔的生母曾经告诉过他，<font color="darkred">“<strong>坏事发生时闭上眼睛，等坏事过去之后再睁开眼睛。”</strong></font>这样形成的盲点让他看不见这个世界的黑暗和无情，或许盲点就是迈克尔的弱点.<br>&emsp;&emsp;迈克尔生长于环境险恶的黑人聚居区，但一直保持着善良的本性，被母亲无奈抛弃，有过领养家庭却都偷跑回来照顾母亲，是因为他妈妈从小教导他，世界还是一片美好，这个生命的盲点保持了迈克尔的纯净。</p>
+<p>&emsp;&emsp;这部电影凸显出美国社会底层的黑暗，将人性的丑陋暴露无遗,<br>&emsp;&emsp;有些时候个人成功不单单取决于自身有多努力，多么勤奋，还是需要社会给予的高度关注和良好的发展平台，我们需要被接纳和一个足够成长的过程。和谐社会救了我，有d领导真幸福!<br>&emsp;&emsp;其实盲点也不是说是真的看不见，迈克尔很聪明的也知道母亲在吸毒，也知道发生的不好的事情，只是像我们很多人一样选择视若未见，迈克尔是出于对母亲的善良，而我们是源于内心的冷漠，要说无情我们也不是真的无情，只是现实模糊了双眼，蒙蔽了内心深处的清明。<br>&emsp;&emsp;对我们大多数人来说，迈克尔曾经的不幸是一个盲点，他们视而不见。生活中有太多的不幸，让我们麻木、无动于衷。幸运的是，安妮当晚看到了这个盲点看到并面对了子子而行的迈克尔，从而避免了他像他的兄弟们一样沉没和无处可去。她挽救了他的才华，挽救了他的命运。她为此感谢上帝。她满足了迈克尔迈克尔也满足了她<br>&emsp;&emsp;这个道理适用于所有的人，度人就是度己，做一个对别人有意义的人，对自己最好的成全<br>&emsp;&emsp;一场雨，可以让迈克尔在生活中遇到贵人，而一场雨，也可以扑灭所有人的心。</p>
+<p><img src="https://pic.imgdb.cn/item/649126311ddac507cca0f7ac.png"></p>
+<p align="right">2022.11.26 02:54</p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg"></a><div class="post-copyright__author_name">我是叶一片</div><div class="post-copyright__author_desc">天地在兜里</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward" onclick="AddRewardMask()"><div class="reward-button" title="赞赏作者"><i class="scoicon sco-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a target="_blank" rel="noopener" href="https://picdl.sunbangyan.cn/2023/08/27/r2rp33.jpg"><img class="post-qr-code-img" src="https://picdl.sunbangyan.cn/2023/08/27/r2rp33.jpg" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://picdl.sunbangyan.cn/2023/08/27/r2rppt.jpg" target="_blank"><img class="post-qr-code-img" src="https://picdl.sunbangyan.cn/2023/08/27/r2rppt.jpg" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    console.log("RemoveRewardMask")
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    console.log("AddRewardMask")
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">我是叶一片</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%86%E4%BA%AB/"><span class="tags-punctuation"></span>分享<span class="tagsPageCount">6</span></a><a class="post-meta__tags" href="/tags/%E7%94%B5%E5%BD%B1/"><span class="tags-punctuation"></span>电影<span class="tagsPageCount">1</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/30/%E6%88%91%E4%B8%8E%E6%97%A7%E4%BA%8B%E5%BD%92%E4%BA%8E%E5%B0%BD%EF%BC%8C%E6%9D%A5%E5%B9%B4%E4%BE%9D%E6%97%A7%E8%BF%8E%E8%8A%B1%E5%BC%80/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">我与旧事归于尽，来年依旧迎花开</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/15/%E4%BC%98%E5%8C%96%E9%98%B2%E7%96%AB%E6%8E%AA%E6%96%BD%E4%B9%8B%E5%90%8E%E7%9A%84%E5%AE%B6%E4%B8%AD%E5%BF%85%E5%A4%87%E8%8D%AF%E7%89%A9%E6%8E%A8%E8%8D%90/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">优化防疫措施之后的家中必备药物推荐</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="scoicon sco-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/2023/08/25/%E6%91%84%E5%BD%B1%E6%97%A5%E8%AE%B0/" title="摄影日记"><img class="cover" src="https://pic.imgdb.cn/item/64e8be0e661c6c8e540ec4b8.jpg" alt="cover"><div class="content is-center"><div class="title">摄影日记</div></div></a></div><div><a href="/2023/08/24/%E6%97%A5%E6%9C%AC%E6%AD%A3%E5%BC%8F%E5%BC%80%E6%8E%92%E6%A0%B8%E6%B1%A1%E6%B0%B4%EF%BC%8C%E5%88%B0%E5%BA%95%E5%A4%9A%E5%8F%AF%E6%80%95%EF%BC%9F/" title="日本正式开排核污水，到底多可怕？"><img class="cover" src="https://pic.imgdb.cn/item/64e84b8f661c6c8e54ed5b94.jpg" alt="cover"><div class="content is-center"><div class="title">日本正式开排核污水，到底多可怕？</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">一日之计在于晨</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="https://files.superbed.cn/store/superbed/a9/b1/64eb2dec661c6c8e548ea9b1.jpg"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://bu.dusays.com/2023/12/30/659011053e246.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">风与我作伴,白云作衣裳,<b>天地在兜里面</b>。睁开双眼看到大千世界,<b>我是那叶一片</b>。</div><div class="author-info__description2">希望我能真正学到一些真正有用的东西。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><div class="author-info__name">叶一片</div><div class="author-info__desc">天地在兜里</div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/yeyipian" title="Github"><i class="scoicon sco-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://space.bilibili.com/87607674" title="Bilibili"><i class="scoicon sco-bilibili-line"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="scoicon sco-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%9B%B2%E7%82%B9%E5%87%BA%E7%8E%B0%E4%BA%86%EF%BC%8C%E6%AD%A7%E8%A7%86"><span class="toc-text">第一个盲点出现了，歧视</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%8B%E5%90%8E%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%9B%B2%E7%82%B9%E6%98%AF%E4%BF%A1%E4%BB%BB"><span class="toc-text">之后第二个盲点是信任</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E4%B8%AA%E7%9B%B2%E7%82%B9%E5%B0%B1%E6%98%AF%E7%89%87%E9%87%8C%E6%8F%90%E5%8F%8A%E7%9A%84%EF%BC%8C%E4%BF%9D%E6%8A%A4%E6%84%8F%E8%AF%86"><span class="toc-text">第三个盲点就是片里提及的，保护意识</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="scoicon sco-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/22/mongo%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BA%94%E7%94%A8/" title="mongo集群搭建与应用1"><img alt="mongo集群搭建与应用1" src="/img/default.png"></a><div class="content"><a class="title" href="/2023/11/22/mongo%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BA%94%E7%94%A8/" title="mongo集群搭建与应用1">mongo集群搭建与应用1</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/08/Docker%E9%83%A8%E7%BD%B2Superset/" title="Docker部署Superset"><img alt="Docker部署Superset" src="https://pic.imgdb.cn/item/654b2d7ec458853aef112ae8.jpg"></a><div class="content"><a class="title" href="/2023/11/08/Docker%E9%83%A8%E7%BD%B2Superset/" title="Docker部署Superset">Docker部署Superset</a><a class="article-recent_post_categories" href="/2023/11/08/Docker%E9%83%A8%E7%BD%B2Superset/">学习一下</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/05/datax-web%E5%9C%A8windows%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95/" title="datax-web在windows上环境搭建及同步数据测试"><img alt="datax-web在windows上环境搭建及同步数据测试" src="https://pic.imgdb.cn/item/6549e089c458853aef25b3d2.jpg"></a><div class="content"><a class="title" href="/2023/11/05/datax-web%E5%9C%A8windows%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95/" title="datax-web在windows上环境搭建及同步数据测试">datax-web在windows上环境搭建及同步数据测试</a><a class="article-recent_post_categories" href="/2023/11/05/datax-web%E5%9C%A8windows%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95/">学习一下</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/31/kteele%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2/" title="kettle的安装和部署"><img alt="kettle的安装和部署" src="https://pic.imgdb.cn/item/65585cb5c458853aefc3d68c.jpg"></a><div class="content"><a class="title" href="/2023/10/31/kteele%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2/" title="kettle的安装和部署">kettle的安装和部署</a><a class="article-recent_post_categories" href="/2023/10/31/kteele%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2/">学习一下</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/31/Docker%E5%AE%89%E8%A3%85MySQL%E5%B9%B6%E4%BD%BF%E7%94%A8Navicat%E8%BF%9E%E6%8E%A5/" title="Docker安装MySQL并使用Navicat连接"><img alt="Docker安装MySQL并使用Navicat连接" src="https://pic.imgdb.cn/item/6540a73bc458853aef25752d.jpg"></a><div class="content"><a class="title" href="/2023/10/31/Docker%E5%AE%89%E8%A3%85MySQL%E5%B9%B6%E4%BD%BF%E7%94%A8Navicat%E8%BF%9E%E6%8E%A5/" title="Docker安装MySQL并使用Navicat连接">Docker安装MySQL并使用Navicat连接</a><a class="article-recent_post_categories" href="/2023/10/31/Docker%E5%AE%89%E8%A3%85MySQL%E5%B9%B6%E4%BD%BF%E7%94%A8Navicat%E8%BF%9E%E6%8E%A5/">学习一下</a></div></div></div></div><div class="card-widget card-platform"><div id="flip-wrapper"><div id="flip-content"><div class="face"></div><div class="back face"></div></div></div></div></div></div></main><footer id="footer"><div id="sco-footer-bar"><div class="footer-logo"><span class="scoicon">叶一片</span></div><div class="footer-bar-description">来自我是叶一片 - 天地在兜里的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><div class="footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="返回顶部"></div></div><div id="sco-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2022 - 2024 By&nbsp;<a class="footer-bar-link" href="/">叶一片</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/DuoSco/hexo-theme-solitude">主题</a><a class="footer-bar-link cc" href="/copyright/"><i class="scoicon sco-copyright-line"></i><i class="scoicon sco-creative-commons-by-line"></i><i class="scoicon sco-creative-commons-nc-line"></i><i class="scoicon sco-creative-commons-nd-line"></i></a></div></div></div><div class="needEndHide" id="cookies-window"><div class="cookies-window-title">协议提醒助手</div><div class="cookies-window-content"><span class="cookies-tip">查看本站为你的个人隐私做出的努力</span><a class="cookies-link" href="/privacy/" title="本站如何保护你的隐私"><i class="scoicon sco-right-btn-fill"></i></a></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- inject body--><script src="https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js"></script><script src="/lib/snackbar.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script><div id="js-pjax"><script async src="https://cdn.staticfile.org/busuanzi/2.3.0/bsz.pure.mini.min.js"></script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: false,
+}
+</script></div><!-- post-ai)--><script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn.staticfile.org/meting/2.0.1/Meting.min.js"></script><script>const meting_api = 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r';
+</script><script>const coverColorConfig = {
+    mode: 'local',
+    api: 'https://img2color.meuicat.com/api?img=',
+    time: 43200000,
+}</script><script src="/lib/cover-color.min.js"></script><!-- waterfall--><script src="/lib/waterfall.min.js"></script><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- music--><!-- inject custom body--><script src="/js/custom.js"></script><!-- search--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="5320167908" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--sco-main)"></meting-js></div></body></html><script>const posts=["2023/11/22/mongo集群搭建与应用/","2023/11/08/Docker部署Superset/","2023/11/05/datax-web在windows上环境搭建及同步数据测试/","2023/10/31/kteele的安装和部署/","2023/10/31/Docker安装MySQL并使用Navicat连接/","2023/10/30/PC小米妙享安装-解锁流转补丁/","2023/10/10/MongoDB的下载及安装/","2023/09/24/Flex的简单应用/","2023/09/13/Spark的安装与配置/","2023/09/12/可视化的类型与模型/","2023/09/11/认识Spark/","2023/09/09/“pycharm的tensorflow环境配置/","2023/08/30/大二复盘/","2023/08/29/我的个人角色正式出炉！/","2023/08/25/摄影日记/","2023/08/24/日本正式开排核污水，到底多可怕？/","2023/07/26/基于ECharts数据可视化项目/","2023/07/12/和我旅游到底是谁的荣幸/","2023/07/08/反思自己的第一次面试/","2023/07/01/post/","2023/06/19/大数据平台核心技术/","2023/06/18/hexo-inco图标的引入/","2023/06/18/hexo-Butterfly主题更换字体/","2023/06/12/基于Hadoop豆瓣数据分析/","2023/05/20/Markdown使用手册/","2023/04/28/Students表在Hive的多表查询/","2023/04/26/ESport-Earnings文件在Hive的简单查询/","2023/04/25/student文件在hive中的简单查询/","2023/04/24/在Hive中实现WordCount算法/","2023/04/21/我看了一场来之不易的演出/","2023/03/14/a-j/","2023/03/13/过滤器及监听器/","2023/03/12/MVC及三层架构/","2023/03/11/jsp技术/","2023/03/10/Cookie-Session/","2023/03/09/request和response/","2023/03/08/认识servlet/","2023/03/07/服务器与http协议/","2022/12/30/我与旧事归于尽，来年依旧迎花开/","2022/11/26/弱点/","2022/11/15/优化防疫措施之后的家中必备药物推荐/","2022/11/12/正常生活/","2022/11/05/路过鸿恩寺/","2022/10/28/今天过生日/","2022/10/23/滑啊滑/","2022/10/23/大一复盘/","2022/10/20/看见人的故事-1/","2022/10/19/关于叶一片/","2022/10/18/c语言上级复习/","2022/10/17/hello-world/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); };</script>

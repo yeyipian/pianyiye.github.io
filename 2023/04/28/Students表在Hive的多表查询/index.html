@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Students表在Hive的多表查询 | 我是叶一片</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg"><!-- index.css--><link rel="stylesheet" href="/css/index.css"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><link rel="stylesheet" href="/lib/snackbar.min.css"><!-- comment--><!-- pace 胶囊加载条(Capsule loading bar)--><script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script><!-- search--><!-- aplayer--><link rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css"><!-- swiper--><link rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.css"><!-- echarts--><!-- 灰色纪念日(Gray Anniversary)--><!-- Open Graph--><meta name="description" content="1.资料准备资料下载：https:&amp;#x2F;&amp;#x2F;wwyl.lanzoum.com&amp;#x2F;isI3P0zrssnc 字段解释： 课程表： CODE NAME PERIOD CREDIT 课程编号 课程名称 课时 学分 任课表： CODE SEMESTER TEACHER_ID COURSE_CO"><!-- pwa--><script>(win => {
+        win.saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay,
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        }
+
+        const DarkModeStatus = localStorage.getItem('theme')
+        if (DarkModeStatus !== null) {
+            if (DarkModeStatus === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light')
+            }
+        }
+
+        const asideStatus = saveToLocal.get('aside-status')
+        if (asideStatus !== undefined) {
+            if (asideStatus === 'hide') {
+                document.documentElement.classList.add('hide-aside')
+            } else {
+                document.documentElement.classList.remove('hide-aside')
+            }
+        }
+    }
+)(window)
+
+console.log(
+    "%c🔥 程序：Hexo | 主题：Hexo-Theme-Solitude | 作者：王卓Sco、亦封 | Github: https://github.com/DuoSco/Hexo-theme-solitude | 版本：v1.3.0 😄",
+    "color: #fff; background: linear-gradient(-25deg, #a8edea, #fed6e3); padding: 8px 15px; border-radius: 8px; text-shadow: 2px 2px 4px white; color: black;"
+);
+</script><div><script src="/js/utils.js"></script><script src="/js/main.js"></script></div><!-- custom inject--><link rel="stylesheet" href="/css/custom.css"><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2022-10-17 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.png'
+    },
+    hightlight: {
+        enable: true,
+        limit: 200,
+        expand: false,
+        copy: true,
+    },
+    lightbox: false,
+    randomlinks: false,
+    lang: {
+        theme: {
+            dark: '已切换至深色模式',
+            light: '已切换至浅色模式',
+        },
+        copy: {
+            success: '复制成功',
+            error: '复制失败',
+        },
+        backtop: '返回顶部',
+        time: {
+            recent: '最近',
+            yesterday: '昨天',
+            berforeyesterday: '前天',
+            daybefore: '天前',
+            runtime: '天',
+        },
+        sayhello: {
+            morning: `一日之计在于晨`,
+            noon: `吃饱了才有力气干活`,
+            afternoon: `集中精力，攻克难关`,
+            night: `不要太劳累了，早睡更健康`,
+            goodnight: `睡个好觉，保证精力充沛`,
+        },
+        search: {
+            empty: '找不到你查询的内容：${query}',
+            hit: '找到 ${hits} 条结果，用时 ${time} 毫秒',
+            placeholder: '输入关键词快速查找',
+        }
+    },
+    covercolor: {
+        enable: true
+    },
+    comment: {
+        enable: false,
+        type: '',
+        commentBarrage: true,
+        randomInfoStart: ["聪敏的","可爱的","美丽的"],
+        randomInfoEnd: ["白菜","小可爱","小仙女"],
+        twikoo: {
+            url: '',
+            accessToken: ''
+        },
+        waline: {
+            url: '',
+        }
+    },
+    rightside: {
+        enable: false
+    },
+    ai:{
+        enable: false,
+        key: '',
+        talk: '我是王卓Sco开发的摘要生成助理ScoGPT，ScoGPT在静态部署时进行摘要的撰写，并且在访客访问时通过ScoCorrection转译后的文本摘要实现工具。我在这里只负责已经生成的摘要显示，你无法与我直接沟通，但我可以回答一些预设的问题。',
+        randomPost: false,
+    },
+    music:{
+        enable: false,
+    }
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body id="body"><!-- loading--><div id="loading-box" onclick="preloader.endLoading();" style="zoom:1"><div class="loading-bg"><img class="loading-img" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="loading image"></div></div><script>const preloader = {
+    endLoading: () => {
+        document.getElementById('loading-box').classList.add('loaded');
+    },
+    initLoading: () => {
+        document.getElementById('loading-box').classList.remove('loaded');
+    },
+    removePaceDone: () => {
+        document.getElementById('body').classList = 'pace-done';
+    }
+}
+window.addEventListener('load', () => {
+    preloader.endLoading();
+});
+window.addEventListener('pjax:send', () => {
+    preloader.initLoading();
+});
+document.addEventListener('pjax:complete', () => {
+    preloader.endLoading();
+});</script><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="scoicon sco-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换" href="javascript:void(0);"><i class="scoicon sco-moon-clear-fill"></i></a></div><div class="console-btn-item" id="consoleHideAside"><a class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制" href="javascript:void(0);"><i class="scoicon sco-side-bar-fill"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="sco.musicToggle()"><a class="music-switch" title="音乐开关" href="javascript:void(0);"><i class="scoicon sco-disc-fill"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="sco.switchCommentBarrage()"><a class="commentBarrage"><i class="scoicon sco-chat-fill"></i></a></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()" href="javascript:void(0);"><i class="scoicon sco-moon-clear-fill"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">我的其他</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://yeyipian.top/" title="主页"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="我的其他"><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://weibo.com/u/3284991491" title="微博"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e2ac458853aefca138d.png" alt="我的其他"><span class="back-menu-item-text">微博</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh" title="抖音"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e93c458853aefcbb2cc.png" alt="我的其他"><span class="back-menu-item-text">抖音</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://space.bilibili.com/87607674" title="b站"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e5dc458853aefcaf37b.png" alt="我的其他"><span class="back-menu-item-text">b站</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"><a href="/tags/%E7%BC%96%E7%A8%8B/">编程<sup>22</sup></a><a href="/tags/Docker/">Docker<sup>1</sup></a><a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/">可视化<sup>3</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8A%80%E6%9C%AF/">服务端技术<sup>8</sup></a><a href="/tags/java/">java<sup>8</sup></a><a href="/tags/Cookie/">Cookie<sup>2</sup></a><a href="/tags/Session/">Session<sup>2</sup></a><a href="/tags/Superset/">Superset<sup>1</sup></a><a href="/tags/Hadoop/">Hadoop<sup>6</sup></a><a href="/tags/Hive/">Hive<sup>5</sup></a><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/">大数据平台核心技术<sup>6</sup></a><a href="/tags/ECharts/">ECharts<sup>3</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/">前端<sup>3</sup></a><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">大数据可视化<sup>3</sup></a><a href="/tags/Flex/">Flex<sup>1</sup></a><a href="/tags/MVC/">MVC<sup>1</sup></a><a href="/tags/%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">三层架构<sup>1</sup></a><a href="/tags/MongoDB/">MongoDB<sup>1</sup></a><a href="/tags/%E5%B0%8F%E7%B1%B3%E5%A6%99%E6%83%B3/">小米妙想<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/">数据集群<sup>2</sup></a><a href="/tags/Spark/">Spark<sup>2</sup></a><a href="/tags/datax-web/">datax-web<sup>1</sup></a><a href="/tags/butterfly/">butterfly<sup>2</sup></a><a href="/tags/Hexo/">Hexo<sup>1</sup></a><a href="/tags/jsp/">jsp<sup>1</sup></a><a href="/tags/kettle/">kettle<sup>1</sup></a><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据<sup>1</sup></a><a href="/tags/%E6%91%84%E5%BD%B1/">摄影<sup>3</sup></a><a href="/tags/tensorflow/">tensorflow<sup>1</sup></a><a href="/tags/pycharm/">pycharm<sup>1</sup></a><a href="/tags/request/">request<sup>1</sup></a><a href="/tags/response/">response<sup>1</sup></a><a href="/tags/%E5%88%86%E4%BA%AB/">分享<sup>6</sup></a><a href="/tags/%E7%96%AB%E6%83%85/">疫情<sup>2</sup></a><a href="/tags/%E6%88%91/">我<sup>4</sup></a><a href="/tags/%E9%9D%A2%E8%AF%95/">面试<sup>1</sup></a><a href="/tags/%E6%80%9D%E8%80%83/">思考<sup>1</sup></a><a href="/tags/%E6%97%85%E8%A1%8C/">旅行<sup>1</sup></a><a href="/tags/%E5%A4%8D%E7%9B%98/">复盘<sup>2</sup></a><a href="/tags/Hbase/">Hbase<sup>2</sup></a><a href="/tags/%E7%94%B5%E5%BD%B1/">电影<sup>1</sup></a><a href="/tags/%E6%BC%94%E5%87%BA/">演出<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器<sup>1</sup></a><a href="/tags/servlet/">servlet<sup>1</sup></a><a href="/tags/%E8%BF%87%E6%BB%A4%E5%99%A8/">过滤器<sup>1</sup></a><a href="/tags/%E7%9B%91%E5%90%AC%E5%99%A8/">监听器<sup>1</sup></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><div class="back-home-button" tabindex="-1"><i class="back-home-button-icon scoicon sco-more-fill"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">我的其他</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://yeyipian.top/" title="主页"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="我的其他"><span class="back-menu-item-text">主页</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://weibo.com/u/3284991491" title="微博"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e2ac458853aefca138d.png" alt="我的其他"><span class="back-menu-item-text">微博</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAliiakv9Jh2yOYOztD1uQHeruaGrUCgbbNvshN_hP2xZUNZi_7-EctVKtz1tstUDh" title="抖音"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e93c458853aefcbb2cc.png" alt="我的其他"><span class="back-menu-item-text">抖音</span></a><a class="back-menu-item" target="_blank" rel="noopener" href="https://space.bilibili.com/87607674" title="b站"><img class="back-menu-item-icon" src="https://pic.imgdb.cn/item/65585e5dc458853aefcaf37b.png" alt="我的其他"><span class="back-menu-item-text">b站</span></a></div></div></div></div><a id="site-name" href="/" title="返回博客主页" target="_self"><span class="scoicon">叶一片</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Students表在Hive的多表查询</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="scoicon sco-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="scoicon sco-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="scoicon sco-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="scoicon sco-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button"><a class="site-page" href="https://www.travellings.cn/go.html" title="开往-友链接力" target="_blank"><i class="scoicon sco-train-line"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机一篇文章" href="javascript:void(0);"><i class="scoicon sco-signal-tower-fill"></i></a></div><div class="nav-button" id="nav-console"><a class="console_switchbutton" onclick="sco.showConsole()" title="中控台" href="javascript:void(0);"><i class="scoicon sco-dashboard-fill"></i></a></div><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="scoicon sco-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="scoicon sco-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://pic.imgdb.cn/item/64a93de91ddac507cc1fa1a5.jpg" alt="Students表在Hive的多表查询"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/学习一下/">学习一下</a></span><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tags-name tags-punctuation">编程</span></a><a class="post-meta__tags" href="/tags/Hadoop/"><span class="tags-name tags-punctuation">Hadoop</span></a><a class="post-meta__tags" href="/tags/Hive/"><span class="tags-name tags-punctuation">Hive</span></a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><span class="tags-name tags-punctuation">大数据平台核心技术</span></a></div></div></div></div><h1 class="post-title">Students表在Hive的多表查询</h1><div id="post-meta"><div class="meta-secondline"><span class="post-meta-date" title="meta_posted 2023-04-28 22:59:49"><i class="post-meta-icon scoicon sco-calendar-todo-fill"></i><time datetime="2023-04-28T14:59:49.000Z">2023-04-28T14:59:49.000Z</time></span><span class="post-meta-date" title="meta_updated 2023-08-28 15:34:35"><i class="post-meta-icon scoicon sco-refresh-line"></i><time datetime="2023-08-28T07:34:35.250Z">2023-08-28T07:34:35.250Z</time></span><span class="post-meta-position" title="作者IP归属地为广东"><i class="post-meta-icon scoicon sco-map-pin-fill"></i><span>广东</span></span><a class="post-meta-pv" href="/2023/04/28/Students%E8%A1%A8%E5%9C%A8Hive%E7%9A%84%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" title="文章热度"><i class="post-meta-icon scoicon sco-fire-fill"></i><span id="busuanzi_value_page_pv"><i class="scoicon sco-loading-line"></i></span></a></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-资料准备"><a href="#1-资料准备" class="headerlink" title="1.资料准备"></a>1.资料准备</h2><p>资料下载：<a target="_blank" rel="noopener" href="https://wwyl.lanzoum.com/isI3P0zrssnc">https://wwyl.lanzoum.com/isI3P0zrssnc</a></p>
+<p>字段解释：</p>
+<p>课程表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">CODE</th>
+<th align="center">NAME</th>
+<th align="center">PERIOD</th>
+<th align="center">CREDIT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">课程编号</td>
+<td align="center">课程名称</td>
+<td align="center">课时</td>
+<td align="center">学分</td>
+</tr>
+</tbody></table>
+<p>任课表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">CODE</th>
+<th align="center">SEMESTER</th>
+<th align="center">TEACHER_ID</th>
+<th align="center">COURSE_CODE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">课程编号</td>
+<td align="center">学期</td>
+<td align="center">任课老师编号</td>
+<td align="center">与上表CODE对应</td>
+</tr>
+</tbody></table>
+<p>专业表</p>
+<table>
+<thead>
+<tr>
+<th align="center">ID</th>
+<th align="center">COLLEGE</th>
+<th align="center">MAJOR</th>
+<th align="center">GRADE</th>
+<th align="center">CLASS</th>
+<th align="center">TYPE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">编号</td>
+<td align="center">学院</td>
+<td align="center">学号</td>
+<td align="center">年级</td>
+<td align="center">班级</td>
+<td align="center">类型</td>
+</tr>
+</tbody></table>
+<p>学生表</p>
+<table>
+<thead>
+<tr>
+<th align="center">ID</th>
+<th align="center">NAME</th>
+<th align="center">GENDER</th>
+<th align="center">BIRTHDATE</th>
+<th align="center">PHONENUMBER</th>
+<th align="center">MAJOR_CLASS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">学生编号</td>
+<td align="center">姓名</td>
+<td align="center">性别</td>
+<td align="center">生日</td>
+<td align="center">手机号</td>
+<td align="center">专业班级</td>
+</tr>
+</tbody></table>
+<p>选课表</p>
+<table>
+<thead>
+<tr>
+<th align="center">COURSE_CLASS_CODE</th>
+<th align="center">STUDENT_ID</th>
+<th align="center">SCORE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">与表2的CODE对应</td>
+<td align="center">学生编号</td>
+<td align="center">成绩</td>
+</tr>
+</tbody></table>
+<p>教师表</p>
+<table>
+<thead>
+<tr>
+<th align="center">ID</th>
+<th align="center">NAME</th>
+<th align="center">GENDER</th>
+<th align="center">TITLE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">教师编号</td>
+<td align="center">姓名</td>
+<td align="center">性别</td>
+<td align="center">职称</td>
+</tr>
+</tbody></table>
+<h2 id="2-日常操作"><a href="#2-日常操作" class="headerlink" title="2.日常操作"></a>2.日常操作</h2><h3 id="（1）启动、新建文件夹"><a href="#（1）启动、新建文件夹" class="headerlink" title="（1）启动、新建文件夹"></a>（1）启动、新建文件夹</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">start-all.sh</span><br><span class="line">hadoop fs -mkdir /hadoop_class/student_data</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）copyFromLocal"><a href="#（2）copyFromLocal" class="headerlink" title="（2）copyFromLocal"></a>（2）copyFromLocal</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -copyFromLocal ~/student/tb_course.csv /hadoop_class/student_data</span><br><span class="line">hadoop fs -copyFromLocal ~/student/tb_course_class.csv /hadoop_class/student_data</span><br><span class="line">hadoop fs -copyFromLocal ~/student/tb_major_class.csv /hadoop_class/student_data</span><br><span class="line">hadoop fs -copyFromLocal ~/student/tb_student.csv /hadoop_class/student_data</span><br><span class="line">hadoop fs -copyFromLocal ~/student/tb_electives.csv /hadoop_class/student_data</span><br><span class="line">hadoop fs -copyFromLocal ~/student/tb_teacher.csv /hadoop_class/student_data</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hive</span><br><span class="line">use username;/*我这次没用*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="（3）建表"><a href="#（3）建表" class="headerlink" title="（3）建表"></a>（3）建表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*course*/</span><br><span class="line">CREATE EXTERNAL TABLE IF NOT EXISTS course(CODE string,NAME string,PERIOD int,CREDIT int)</span><br><span class="line">row format serde &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;</span><br><span class="line">stored as textfile</span><br><span class="line"></span><br><span class="line">load data inpath &#x27;/hadoop_class/student_data/tb_course.csv&#x27; overwrite into table course;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*course_class*/</span><br><span class="line">CREATE EXTERNAL TABLE IF NOT EXISTS course_class(CODE string,SEMESTER string,TEACHER_ID int,COURSE_CODE string)</span><br><span class="line">row format serde &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;</span><br><span class="line">stored as textfile</span><br><span class="line"></span><br><span class="line">load data inpath &#x27;/hadoop_class/student_data/tb_course_class.csv&#x27; overwrite into table course_class;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*major_class*/</span><br><span class="line">CREATE EXTERNAL TABLE IF NOT EXISTS major_class(ID int,COLLEGE string,MAJOR string,GRADE int,CLASS int,TYPE string)</span><br><span class="line">row format serde &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;</span><br><span class="line">stored as textfile;</span><br><span class="line"></span><br><span class="line">load data inpath &#x27;/hadoop_class/student_data/tb_major_class.csv&#x27; overwrite into table major_class;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*students*/</span><br><span class="line">CREATE EXTERNAL TABLE IF NOT EXISTS students(ID int,NAME string,GENDER string,BIRTHDATE string,PHONENUMBER string,MAJOR_CLASS int)</span><br><span class="line">row format serde &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;</span><br><span class="line">stored as textfile;</span><br><span class="line"></span><br><span class="line">load data inpath &#x27;/hadoop_class/student_data/tb_student.csv&#x27; overwrite into table students;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*electives*/</span><br><span class="line">CREATE EXTERNAL TABLE IF NOT EXISTS electives(COURSE_CLASS_CODE string,STUDENT_ID int,SCORE int)</span><br><span class="line">row format serde &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;</span><br><span class="line">stored as textfile;</span><br><span class="line"></span><br><span class="line">load data inpath &#x27;/hadoop_class/student_data/tb_electives.csv&#x27; overwrite into table electives;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*teacher*/</span><br><span class="line">CREATE EXTERNAL TABLE IF NOT EXISTS teacher(ID int,NAME string,GENDER string,TITLE string)</span><br><span class="line">row format serde &#x27;org.apache.hadoop.hive.serde2.OpenCSVSerde&#x27;</span><br><span class="line">stored as textfile;</span><br><span class="line"></span><br><span class="line">load data inpath &#x27;/hadoop_class/student_data/tb_teacher.csv&#x27; overwrite into table teacher;</span><br></pre></td></tr></table></figure>
+
+<h3 id="（4）题目-去表头"><a href="#（4）题目-去表头" class="headerlink" title="（4）题目[去表头]"></a>（4）题目[去表头]</h3><p>1、分析数据：<br>   a、男女生比例<br>   b、学生整体及格率<br>   c、每门课程的平均分，要求显示出课程的中文名字<br>   d、有2门课不及格的学生（重修的学生）<br>   e、课程的及格率，同时要显示老师的名字（绩效考核）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> course <span class="keyword">set</span> TBLPROPERTIES(&quot;skip.header.line.count&quot;<span class="operator">=</span>&quot;1&quot;);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> course_class <span class="keyword">set</span> TBLPROPERTIES(&quot;skip.header.line.count&quot;<span class="operator">=</span>&quot;1&quot;);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> major_class <span class="keyword">set</span> TBLPROPERTIES(&quot;skip.header.line.count&quot;<span class="operator">=</span>&quot;1&quot;);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> students <span class="keyword">set</span> TBLPROPERTIES(&quot;skip.header.line.count&quot;<span class="operator">=</span>&quot;1&quot;);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> electives <span class="keyword">set</span> TBLPROPERTIES(&quot;skip.header.line.count&quot;<span class="operator">=</span>&quot;1&quot;);</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> teacher <span class="keyword">set</span> TBLPROPERTIES(&quot;skip.header.line.count&quot;<span class="operator">=</span>&quot;1&quot;);</span><br><span class="line"><span class="comment">/*因为第一行有表头 会影响数据*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-解题"><a href="#3-解题" class="headerlink" title="3.解题"></a>3.解题</h2><h3 id="a、男女生比例"><a href="#a、男女生比例" class="headerlink" title="a、男女生比例"></a>a、男女生比例</h3><p>方法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT GENDER,count(*),100*count(*)/SUM(count(*)) over()</span><br><span class="line">FROM students</span><br><span class="line">GROUP BY GENDER;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649463e91ddac507cc527265.jpg"></p>
+<p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select t1.male/t2.female from</span><br><span class="line">(select count(1) as male from students where GENDER=&#x27;男&#x27;) t1,</span><br><span class="line">(select count(1) as female from students where GENDER=&#x27;女&#x27;) t2 where 1=1;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649463ff1ddac507cc5296e2.jpg"></p>
+<h3 id="b、学生整体及格率"><a href="#b、学生整体及格率" class="headerlink" title="b、学生整体及格率"></a>b、学生整体及格率</h3><p>方法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TEMPORARY TABLE temp1 AS</span><br><span class="line">SELECT COURSE_CLASS_CODE, COUNT(*) AS totlsum </span><br><span class="line">FROM electives </span><br><span class="line">WHERE SCORE&gt;=60</span><br><span class="line">GROUP BY COURSE_CLASS_CODE;</span><br><span class="line"></span><br><span class="line">CREATE TEMPORARY TABLE temp2 AS</span><br><span class="line">SELECT COURSE_CLASS_CODE, COUNT(*) AS totlsum2 </span><br><span class="line">FROM electives </span><br><span class="line">GROUP BY COURSE_CLASS_CODE;</span><br><span class="line"></span><br><span class="line">SELECT temp1.COURSE_CLASS_CODE,CONCAT(CAST(temp1.totlsum*100/temp2.totlsum2 AS DECIMAL(10,2)),&#x27;%&#x27;)</span><br><span class="line">FROM temp1,temp2</span><br><span class="line">WHERE temp1.COURSE_CLASS_CODE=temp2.COURSE_CLASS_CODE;</span><br><span class="line">/*SELECT CONCAT(CAST(value AS DECIMAL(10,2)), &#x27;%&#x27;) FROM table_name;</span><br><span class="line">执行以上 HiveQL 查询后，返回的结果会将 value 列中的所有数值格式化为保留两位小数并添加百分号的形式*/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649464081ddac507cc52a3be.jpg"></p>
+<p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT t1.pass/t2.total </span><br><span class="line">FROM (SELECT COUNT(1) as pass </span><br><span class="line">      FROM electives </span><br><span class="line">      WHERE SCORE &lt;60)t1,</span><br><span class="line">      (SELECT COUNT(1) as total </span><br><span class="line">      FROM electives)t2;</span><br><span class="line">      </span><br><span class="line">SELECT ROUND(SUM(IF(SCORE&gt;=60,1,0))/COUNT(1),2) FROM electives;</span><br><span class="line">/*ROUND函数 将数字四舍五入到指定的位数。*/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6494641a1ddac507cc52bb8a.jpg"></p>
+<h3 id="c、每门课程的平均分，要求显示出课程的中文名字"><a href="#c、每门课程的平均分，要求显示出课程的中文名字" class="headerlink" title="c、每门课程的平均分，要求显示出课程的中文名字"></a>c、每门课程的平均分，要求显示出课程的中文名字</h3><p>方法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TEMPORARY TABLE temp3 AS</span><br><span class="line">    SELECT COURSE_CLASS_CODE,SPLIT(COURSE_CLASS_CODE, &#x27;\\.&#x27;)[0] AS code,avg(score) AS avg1 </span><br><span class="line">    from electives </span><br><span class="line">    group by COURSE_CLASS_CODE;</span><br><span class="line"></span><br><span class="line">SELECT t1.code,avg(avg1),t2.NAME</span><br><span class="line">FROM temp3 t1,course t2</span><br><span class="line">WHERE t1.code=t2.CODE</span><br><span class="line">GROUP BY t1.code,t2.NAME;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649464251ddac507cc52c9f7.jpg"></p>
+<p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/*非严格模式*/</span><br><span class="line">SELECT t2.NAME,ROUND(AVG(SCORE),2) AS avg_score</span><br><span class="line">FROM electives t1,course t2,course_class t3</span><br><span class="line">WHERE</span><br><span class="line">t1.COURSE_CLASS_CODE = t3.CODE AND</span><br><span class="line">t2.CODE = t3.COURSE_CODE</span><br><span class="line">GROUP BY t2.NAME;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6494642f1ddac507cc52d8be.jpg"></p>
+<p>方法三：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT t2.NAME,ROUND(AVG(SCORE),2)AS avg_score FROM electives t1</span><br><span class="line">LEFT JOIN course_class t3 ON t1.COURSE_CLASS_CODE=t3.CODE</span><br><span class="line">LEFT JOIN course t2 ON t2.CODE=t3.COURSE_CODE</span><br><span class="line">GROUP BY t2.NAME;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6494643b1ddac507cc52ea67.jpg"></p>
+<p>方法四：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT t1.COURSE_CLASS_CODE,t2.NAME,t1.avg_score</span><br><span class="line">FROM</span><br><span class="line">(SELECT COURSE_CLASS_CODE,ROUND(AVG(SCORE),2)AS avg_score FROM electives GROUP BY COURSE_CLASS_CODE)t1</span><br><span class="line">LEFT JOIN course_class t3 ON t1.COURSE_CLASS_CODE=t3.CODE</span><br><span class="line">LEFT JOIN course t2 ON t2.CODE=t3.COURSE_CODE;</span><br><span class="line"></span><br><span class="line">/*FULL OUTER,LEFT ,RIGHT,CROSS JOIN 都可以*/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6494644a1ddac507cc5302c9.jpg"></p>
+<h3 id="d、有2门课不及格的学生（重修的学生）"><a href="#d、有2门课不及格的学生（重修的学生）" class="headerlink" title="d、有2门课不及格的学生（重修的学生）"></a>d、有2门课不及格的学生（重修的学生）</h3><p>方法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TEMPORARY TABLE temp4 AS</span><br><span class="line">    SELECT STUDENT_ID,count(*) AS count1</span><br><span class="line">    FROM electives</span><br><span class="line">    WHERE SCORE&lt;60</span><br><span class="line">    GROUP BY STUDENT_ID;</span><br><span class="line"></span><br><span class="line">SELECT t1.NAME,t2.count1</span><br><span class="line">FROM students t1,temp4 t2</span><br><span class="line">WHERE t1.ID=t2.STUDENT_ID AND count1&gt;=2;/*有2门课不及格的学生（重修的学生） 所以是&gt;=2*/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649464531ddac507cc53134d.jpg"></p>
+<p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT t1.STUDENT_ID,t2.NAME,t1.score</span><br><span class="line">FROM</span><br><span class="line">(SELECT STUDENT_ID,SUM(IF(SCORE&lt;60,1,0))AS score FROM electives GROUP BY STUDENT_ID HAVING score&gt;=2)t1</span><br><span class="line">LEFT JOIN student t2 ON t2.ID=t1.STUDENT_ID;</span><br><span class="line">/*姓名会显示失败，暂时没有解决*/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6494645d1ddac507cc532208.jpg"></p>
+<h3 id="e、课程的及格率，同时要显示老师的名字（绩效考核）"><a href="#e、课程的及格率，同时要显示老师的名字（绩效考核）" class="headerlink" title="e、课程的及格率，同时要显示老师的名字（绩效考核）"></a>e、课程的及格率，同时要显示老师的名字（绩效考核）</h3><p>方法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*课程平均分绩效*/</span><br><span class="line">CREATE TEMPORARY TABLE temp5 AS</span><br><span class="line">    SELECT t1.COURSE_CLASS_CODE,t2.TEACHER_ID AS ID1,avg(t1.score) AS avg1 </span><br><span class="line">    FROM electives t1,course_class t2</span><br><span class="line">    WHERE t1.COURSE_CLASS_CODE=t2.CODE</span><br><span class="line">    GROUP BY t1.COURSE_CLASS_CODE,t2.TEACHER_ID</span><br><span class="line">    ORDER BY t2.TEACHER_ID;</span><br><span class="line"></span><br><span class="line">SELECT t1.COURSE_CLASS_CODE,t1.ID1,t2.NAME,t1.avg1</span><br><span class="line">FROM temp5 t1,teacher t2</span><br><span class="line">WHERE t1.ID1=t2.ID;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649464671ddac507cc53313c.jpg"></p>
+<p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT t1.COURSE_CLASS_CODE,t1.per,t3.NAME</span><br><span class="line">FROM</span><br><span class="line">(SELECT COURSE_CLASS_CODE,ROUND(SUM(IF(SCORE&gt;=60,1,0))/COUNT(*),4) AS per</span><br><span class="line">FROM electives</span><br><span class="line">GROUP BY COURSE_CLASS_CODE)t1</span><br><span class="line">LEFT JOIN course_class t2 ON t1.COURSE_CLASS_CODE=t2.CODE</span><br><span class="line">LEFT JOIN teacher t3 on t2.teacher_id = ID</span><br><span class="line">ORDER BY t3.NAME;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/649464711ddac507cc533f1c.jpg"></p>
+<h3 id="f、老师教了几门课"><a href="#f、老师教了几门课" class="headerlink" title="f、老师教了几门课"></a>f、老师教了几门课</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT t1.NAME AS TEACHER_NAME, COUNT(t2.COURSE_CODE) </span><br><span class="line">FROM teacher t1</span><br><span class="line">JOIN course_class t2 ON t1.ID = t2.TEACHER_ID</span><br><span class="line">GROUP BY t1.NAME;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6494647b1ddac507cc534da1.jpg"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/*最后要记得*/</span><br><span class="line">stop-all.sh</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg"></a><div class="post-copyright__author_name">我是叶一片</div><div class="post-copyright__author_desc">天地在兜里</div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div><div class="post-reward" onclick="AddRewardMask()"><div class="reward-button" title="赞赏作者"><i class="scoicon sco-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><ul class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a target="_blank" rel="noopener" href="https://picdl.sunbangyan.cn/2023/08/27/r2rp33.jpg"><img class="post-qr-code-img" src="https://picdl.sunbangyan.cn/2023/08/27/r2rp33.jpg" alt="微信"></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://picdl.sunbangyan.cn/2023/08/27/r2rppt.jpg" target="_blank"><img class="post-qr-code-img" src="https://picdl.sunbangyan.cn/2023/08/27/r2rppt.jpg" alt="支付宝"></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></ul></div></div><script>function RemoveRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    console.log("RemoveRewardMask")
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "none";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "none";
+    }
+}
+
+function AddRewardMask() {
+    let rewardMainElements = document.querySelectorAll(".reward-main");
+    let quitBoxElement = document.querySelector("#quit-box");
+
+    console.log("AddRewardMask")
+
+    rewardMainElements.forEach(element => {
+        element.style.display = "flex";
+    });
+
+    if (quitBoxElement) {
+        quitBoxElement.style.display = "flex";
+    }
+}</script></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">我是叶一片</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/"><span class="tags-punctuation"></span>编程<span class="tagsPageCount">22</span></a><a class="post-meta__tags" href="/tags/Hadoop/"><span class="tags-punctuation"></span>Hadoop<span class="tagsPageCount">6</span></a><a class="post-meta__tags" href="/tags/Hive/"><span class="tags-punctuation"></span>Hive<span class="tagsPageCount">5</span></a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF/"><span class="tags-punctuation"></span>大数据平台核心技术<span class="tagsPageCount">6</span></a></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/05/20/Markdown%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Markdown使用手册</div></div></a></div><div class="next-post pull-right"><a href="/2023/04/26/ESport-Earnings%E6%96%87%E4%BB%B6%E5%9C%A8Hive%E7%9A%84%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ESport_Earnings文件在Hive的简单查询</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="scoicon sco-star-smile-fill"></i><span>喜欢这篇的人也看了</span><div class="relatedPosts-link"><a onclick="event.preventDefault(); toRandomPost();" href="javascript:void(0);" rel="external nofollow" data-pjax-state="">随便逛逛</a></div></div><div class="relatedPosts-list"><div><a href="/2023/06/12/%E5%9F%BA%E4%BA%8EHadoop%E8%B1%86%E7%93%A3%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" title="基于Hadoop豆瓣数据分析"><img class="cover" src="https://pic.imgdb.cn/item/64a9411f1ddac507cc24e7c2.jpg" alt="cover"><div class="content is-center"><div class="title">基于Hadoop豆瓣数据分析</div></div></a></div><div><a href="/2023/04/26/ESport-Earnings%E6%96%87%E4%BB%B6%E5%9C%A8Hive%E7%9A%84%E7%AE%80%E5%8D%95%E6%9F%A5%E8%AF%A2/" title="ESport_Earnings文件在Hive的简单查询"><img class="cover" src="https://pic.imgdb.cn/item/64a93cf61ddac507cc1e1158.jpg" alt="cover"><div class="content is-center"><div class="title">ESport_Earnings文件在Hive的简单查询</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">一日之计在于晨</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="https://files.superbed.cn/store/superbed/a9/b1/64eb2dec661c6c8e548ea9b1.jpg"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://bu.dusays.com/2023/12/30/659011053e246.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">风与我作伴,白云作衣裳,<b>天地在兜里面</b>。睁开双眼看到大千世界,<b>我是那叶一片</b>。</div><div class="author-info__description2">希望我能真正学到一些真正有用的东西。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about"><div class="author-info__name">叶一片</div><div class="author-info__desc">天地在兜里</div></a><div class="card-info-social-icons is-center"><a class="social-icon" target="_blank" rel="noopener" href="https://github.com/yeyipian" title="Github"><i class="scoicon sco-github-line"></i></a><a class="social-icon" target="_blank" rel="noopener" href="https://space.bilibili.com/87607674" title="Bilibili"><i class="scoicon sco-bilibili-line"></i></a></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="scoicon sco-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%B5%84%E6%96%99%E5%87%86%E5%A4%87"><span class="toc-text">1.资料准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%97%A5%E5%B8%B8%E6%93%8D%E4%BD%9C"><span class="toc-text">2.日常操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%90%AF%E5%8A%A8%E3%80%81%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">（1）启动、新建文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89copyFromLocal"><span class="toc-text">（2）copyFromLocal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%BB%BA%E8%A1%A8"><span class="toc-text">（3）建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E9%A2%98%E7%9B%AE-%E5%8E%BB%E8%A1%A8%E5%A4%B4"><span class="toc-text">（4）题目[去表头]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%A7%A3%E9%A2%98"><span class="toc-text">3.解题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a%E3%80%81%E7%94%B7%E5%A5%B3%E7%94%9F%E6%AF%94%E4%BE%8B"><span class="toc-text">a、男女生比例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E3%80%81%E5%AD%A6%E7%94%9F%E6%95%B4%E4%BD%93%E5%8F%8A%E6%A0%BC%E7%8E%87"><span class="toc-text">b、学生整体及格率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c%E3%80%81%E6%AF%8F%E9%97%A8%E8%AF%BE%E7%A8%8B%E7%9A%84%E5%B9%B3%E5%9D%87%E5%88%86%EF%BC%8C%E8%A6%81%E6%B1%82%E6%98%BE%E7%A4%BA%E5%87%BA%E8%AF%BE%E7%A8%8B%E7%9A%84%E4%B8%AD%E6%96%87%E5%90%8D%E5%AD%97"><span class="toc-text">c、每门课程的平均分，要求显示出课程的中文名字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d%E3%80%81%E6%9C%892%E9%97%A8%E8%AF%BE%E4%B8%8D%E5%8F%8A%E6%A0%BC%E7%9A%84%E5%AD%A6%E7%94%9F%EF%BC%88%E9%87%8D%E4%BF%AE%E7%9A%84%E5%AD%A6%E7%94%9F%EF%BC%89"><span class="toc-text">d、有2门课不及格的学生（重修的学生）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e%E3%80%81%E8%AF%BE%E7%A8%8B%E7%9A%84%E5%8F%8A%E6%A0%BC%E7%8E%87%EF%BC%8C%E5%90%8C%E6%97%B6%E8%A6%81%E6%98%BE%E7%A4%BA%E8%80%81%E5%B8%88%E7%9A%84%E5%90%8D%E5%AD%97%EF%BC%88%E7%BB%A9%E6%95%88%E8%80%83%E6%A0%B8%EF%BC%89"><span class="toc-text">e、课程的及格率，同时要显示老师的名字（绩效考核）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f%E3%80%81%E8%80%81%E5%B8%88%E6%95%99%E4%BA%86%E5%87%A0%E9%97%A8%E8%AF%BE"><span class="toc-text">f、老师教了几门课</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="scoicon sco-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/22/mongo%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BA%94%E7%94%A8/" title="mongo集群搭建与应用1"><img alt="mongo集群搭建与应用1" src="/img/default.png"></a><div class="content"><a class="title" href="/2023/11/22/mongo%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%BA%94%E7%94%A8/" title="mongo集群搭建与应用1">mongo集群搭建与应用1</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/08/Docker%E9%83%A8%E7%BD%B2Superset/" title="Docker部署Superset"><img alt="Docker部署Superset" src="https://pic.imgdb.cn/item/654b2d7ec458853aef112ae8.jpg"></a><div class="content"><a class="title" href="/2023/11/08/Docker%E9%83%A8%E7%BD%B2Superset/" title="Docker部署Superset">Docker部署Superset</a><a class="article-recent_post_categories" href="/2023/11/08/Docker%E9%83%A8%E7%BD%B2Superset/">学习一下</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/05/datax-web%E5%9C%A8windows%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95/" title="datax-web在windows上环境搭建及同步数据测试"><img alt="datax-web在windows上环境搭建及同步数据测试" src="https://pic.imgdb.cn/item/6549e089c458853aef25b3d2.jpg"></a><div class="content"><a class="title" href="/2023/11/05/datax-web%E5%9C%A8windows%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95/" title="datax-web在windows上环境搭建及同步数据测试">datax-web在windows上环境搭建及同步数据测试</a><a class="article-recent_post_categories" href="/2023/11/05/datax-web%E5%9C%A8windows%E4%B8%8A%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E5%90%8C%E6%AD%A5%E6%95%B0%E6%8D%AE%E6%B5%8B%E8%AF%95/">学习一下</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/31/kteele%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2/" title="kettle的安装和部署"><img alt="kettle的安装和部署" src="https://pic.imgdb.cn/item/65585cb5c458853aefc3d68c.jpg"></a><div class="content"><a class="title" href="/2023/10/31/kteele%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2/" title="kettle的安装和部署">kettle的安装和部署</a><a class="article-recent_post_categories" href="/2023/10/31/kteele%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2/">学习一下</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/10/31/Docker%E5%AE%89%E8%A3%85MySQL%E5%B9%B6%E4%BD%BF%E7%94%A8Navicat%E8%BF%9E%E6%8E%A5/" title="Docker安装MySQL并使用Navicat连接"><img alt="Docker安装MySQL并使用Navicat连接" src="https://pic.imgdb.cn/item/6540a73bc458853aef25752d.jpg"></a><div class="content"><a class="title" href="/2023/10/31/Docker%E5%AE%89%E8%A3%85MySQL%E5%B9%B6%E4%BD%BF%E7%94%A8Navicat%E8%BF%9E%E6%8E%A5/" title="Docker安装MySQL并使用Navicat连接">Docker安装MySQL并使用Navicat连接</a><a class="article-recent_post_categories" href="/2023/10/31/Docker%E5%AE%89%E8%A3%85MySQL%E5%B9%B6%E4%BD%BF%E7%94%A8Navicat%E8%BF%9E%E6%8E%A5/">学习一下</a></div></div></div></div><div class="card-widget card-platform"><div id="flip-wrapper"><div id="flip-content"><div class="face"></div><div class="back face"></div></div></div></div></div></div></main><footer id="footer"><div id="sco-footer-bar"><div class="footer-logo"><span class="scoicon">叶一片</span></div><div class="footer-bar-description">来自我是叶一片 - 天地在兜里的文章</div><a class="footer-bar-link" href="/">了解更多</a></div><div id="footer_deal"><div class="footer_mini_logo" id="footer_mini_logo" title="返回顶部" onclick="sco.toTop()"><img src="https://pic.imgdb.cn/item/64eb2dec661c6c8e548ea9b1.jpg" alt="返回顶部"></div></div><div id="sco-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2022 - 2024 By&nbsp;<a class="footer-bar-link" href="/">叶一片</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/DuoSco/hexo-theme-solitude">主题</a><a class="footer-bar-link cc" href="/copyright/"><i class="scoicon sco-copyright-line"></i><i class="scoicon sco-creative-commons-by-line"></i><i class="scoicon sco-creative-commons-nc-line"></i><i class="scoicon sco-creative-commons-nd-line"></i></a></div></div></div><div class="needEndHide" id="cookies-window"><div class="cookies-window-title">协议提醒助手</div><div class="cookies-window-content"><span class="cookies-tip">查看本站为你的个人隐私做出的努力</span><a class="cookies-link" href="/privacy/" title="本站如何保护你的隐私"><i class="scoicon sco-right-btn-fill"></i></a></div></div><div class="comment-barrage needEndHide"></div></footer></div><!-- inject body--><script src="https://cdn.staticfile.org/pjax/0.2.8/pjax.min.js"></script><script src="/lib/snackbar.min.js"></script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/Swiper/8.0.6/swiper-bundle.min.js"></script><div id="js-pjax"><script async src="https://cdn.staticfile.org/busuanzi/2.3.0/bsz.pure.mini.min.js"></script><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: 'post',
+    toc: true,
+    comment: false,
+}
+</script></div><!-- post-ai)--><script src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdn.staticfile.org/meting/2.0.1/Meting.min.js"></script><script>const meting_api = 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r';
+</script><script>const coverColorConfig = {
+    mode: 'local',
+    api: 'https://img2color.meuicat.com/api?img=',
+    time: 43200000,
+}</script><script src="/lib/cover-color.min.js"></script><!-- waterfall--><script src="/lib/waterfall.min.js"></script><!-- pjax--><script>let pjaxSelectors = [
+    'title',
+    '#body-wrap',
+    '#site-config',
+    'meta[name="description"]',
+    '#js-pjax',
+    'meta[property^="og:"]',
+]
+
+const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- music--><!-- inject custom body--><script src="/js/custom.js"></script><!-- search--><!-- music--><div class="needEndHide" id="nav-music" onclick="sco.musicToggle()"><div id="nav-music-hoverTips">音乐已暂停</div><meting-js id="5320167908" server="netease" type="playlist" mutex="true" preload="none" data-lrctype="0" order="random" theme="var(--sco-main)"></meting-js></div></body></html><script>const posts=["2023/11/22/mongo集群搭建与应用/","2023/11/08/Docker部署Superset/","2023/11/05/datax-web在windows上环境搭建及同步数据测试/","2023/10/31/kteele的安装和部署/","2023/10/31/Docker安装MySQL并使用Navicat连接/","2023/10/30/PC小米妙享安装-解锁流转补丁/","2023/10/10/MongoDB的下载及安装/","2023/09/24/Flex的简单应用/","2023/09/13/Spark的安装与配置/","2023/09/12/可视化的类型与模型/","2023/09/11/认识Spark/","2023/09/09/“pycharm的tensorflow环境配置/","2023/08/30/大二复盘/","2023/08/29/我的个人角色正式出炉！/","2023/08/25/摄影日记/","2023/08/24/日本正式开排核污水，到底多可怕？/","2023/07/26/基于ECharts数据可视化项目/","2023/07/12/和我旅游到底是谁的荣幸/","2023/07/08/反思自己的第一次面试/","2023/07/01/post/","2023/06/19/大数据平台核心技术/","2023/06/18/hexo-inco图标的引入/","2023/06/18/hexo-Butterfly主题更换字体/","2023/06/12/基于Hadoop豆瓣数据分析/","2023/05/20/Markdown使用手册/","2023/04/28/Students表在Hive的多表查询/","2023/04/26/ESport-Earnings文件在Hive的简单查询/","2023/04/25/student文件在hive中的简单查询/","2023/04/24/在Hive中实现WordCount算法/","2023/04/21/我看了一场来之不易的演出/","2023/03/14/a-j/","2023/03/13/过滤器及监听器/","2023/03/12/MVC及三层架构/","2023/03/11/jsp技术/","2023/03/10/Cookie-Session/","2023/03/09/request和response/","2023/03/08/认识servlet/","2023/03/07/服务器与http协议/","2022/12/30/我与旧事归于尽，来年依旧迎花开/","2022/11/26/弱点/","2022/11/15/优化防疫措施之后的家中必备药物推荐/","2022/11/12/正常生活/","2022/11/05/路过鸿恩寺/","2022/10/28/今天过生日/","2022/10/23/滑啊滑/","2022/10/23/大一复盘/","2022/10/20/看见人的故事-1/","2022/10/19/关于叶一片/","2022/10/18/c语言上级复习/","2022/10/17/hello-world/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); };</script>
