@@ -272,9 +272,9 @@
     
     <category term="编程" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="Superset" scheme="http://example.com/tags/Superset/"/>
-    
     <category term="可视化" scheme="http://example.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    <category term="Superset" scheme="http://example.com/tags/Superset/"/>
     
   </entry>
   
@@ -347,9 +347,9 @@
     
     <category term="编程" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="可视化" scheme="http://example.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
     <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    
+    <category term="可视化" scheme="http://example.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
   </entry>
   
