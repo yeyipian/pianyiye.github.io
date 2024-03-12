@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-03-12T07:55:00.156Z</updated>
+  <updated>2024-03-12T11:16:47.901Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新气象</title>
+    <link href="http://example.com/2024/03/12/newtheme/"/>
+    <id>http://example.com/2024/03/12/newtheme/</id>
+    <published>2024-03-12T11:15:03.000Z</published>
+    <updated>2024-03-12T11:16:47.901Z</updated>
+    
+    <content type="html"><![CDATA[<p>给我的播客换一个新页面吧</p><span id="more"></span><p>希望之后都不会换咯</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;给我的播客换一个新页面吧&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="记录碎片" scheme="http://example.com/tags/%E8%AE%B0%E5%BD%95%E7%A2%8E%E7%89%87/"/>
+    
+  </entry>
   
   <entry>
     <title>Git上传失败！</title>
@@ -253,9 +272,9 @@
     
     <category term="编程" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="可视化" scheme="http://example.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
     <category term="Superset" scheme="http://example.com/tags/Superset/"/>
+    
+    <category term="可视化" scheme="http://example.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
   </entry>
   
@@ -328,9 +347,9 @@
     
     <category term="编程" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
-    
     <category term="可视化" scheme="http://example.com/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
     
   </entry>
   
@@ -454,29 +473,6 @@
     <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
     <category term="大数据可视化" scheme="http://example.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>认识Spark</title>
-    <link href="http://example.com/2023/09/11/%E8%AE%A4%E8%AF%86Spark/"/>
-    <id>http://example.com/2023/09/11/%E8%AE%A4%E8%AF%86Spark/</id>
-    <published>2023-09-11T06:44:49.000Z</published>
-    <updated>2024-03-12T09:53:15.709Z</updated>
-    
-    <content type="html"><![CDATA[<p>Spark是一个高速、通用大数据计算处理引擎。</p><span id="more"></span><h1 id="一、发展历程"><a href="#一、发展历程" class="headerlink" title="一、发展历程"></a>一、发展历程</h1><h2 id="1-当前问题"><a href="#1-当前问题" class="headerlink" title="1.当前问题"></a>1.当前问题</h2><h3 id="什么要学Spark？现有的hadoop生态系统中存在的问题？"><a href="#什么要学Spark？现有的hadoop生态系统中存在的问题？" class="headerlink" title="什么要学Spark？现有的hadoop生态系统中存在的问题？"></a><strong>什么要学Spark？现有的hadoop生态系统中存在的问题？</strong></h3><ol><li><p>使用mapreduce进行批量离线分析；</p></li><li><p>使用hive进行历史数据的分析；</p></li><li><p>使用hbase进行实时数据的查询；</p></li><li><p>使用storm进行实时的流处理；</p></li><li><p>python做机器学习</p><p>导致：维护成本高、学习成本高Spark的出现弥补了Hadoop生态系统中的缺陷，使用spark搞定”一切“</p></li></ol><h3 id="MapReduce模型的痛点"><a href="#MapReduce模型的痛点" class="headerlink" title="MapReduce模型的痛点"></a><strong>MapReduce模型的痛点</strong></h3><ul><li>MR代码需要大量的样板。程序员不仅需要考虑Map和Reduce的基本操作概念，而且还需要知道MR的每个问题。</li><li>MR模型不适合迭代处理。程序员对于分布式特性数据是不透明的，需要经常考虑优化，如Map边的reduce，Map边的join操作。</li><li>MR的中间结果总是要持久保存，这是为了容错，但是会有很高IO操作代价，而Spark不会将这些结果持久化（RDD存在于内存中），除非用户明确指定，激活操作的管道化会大大提升速度。</li><li>Spark - RDD抽象使我们远离传统的Map-reduce模型，给了我们的集合(分布)接口，,因此在MR中需要的很多样板操作现在变成了集合操作，例如groupBy、join、count, distinct max, min等等。它还允许我们很容易通过共享RDD之间的操作进行迭代处理。</li></ul></br><h2 id="2-Spark概述"><a href="#2-Spark概述" class="headerlink" title="2.Spark概述"></a>2.Spark概述</h2><h3 id="Spark简介"><a href="#Spark简介" class="headerlink" title="Spark简介"></a><strong>Spark简介</strong></h3><ul><li>Spark是一个高速、通用大数据计算处理引擎。</li><li>Spark最初由美国加州伯克利大学（UCBerkeley）的AMP实验室于2009年开发，是基于内存计算的大数据并行计算框架，可用于构建大型的、低延迟的数据分析应用程序。</li><li>2013年Spark加入Apache孵化器项目后发展迅猛，如今已成为Apache软件基金会最重要的三大分布式计算系统开源项目之一（Hadoop存储、Spark计算、Storm&#x2F;Flink流计算）。</li><li>官方网址：<a href="http://spark.apache.org/">http://spark.apache.org/</a></li></ul></br><h3 id="Spark特点"><a href="#Spark特点" class="headerlink" title="Spark特点"></a>Spark特点</h3><ul><li>运行速度快：　<ol><li>基于内存计算（从表象来看）</li><li>DAG（从深层次来看）：把执行过程做成一张图，再来优化</li></ol></li><li>容易使用：支持使用Scala、Java、Python和R语言进行编程，可以通过Spark Shell进行交互式编程 。</li><li>通用性：Spark提供了完整而强大的技术栈，包括SQL查询、流式计算、机器学习和图算法组件。<ol><li>应用于流式计算的Spark Streaming（如网站监控和网络监控、异常监测、网页点击、用户行为）</li><li>应用于即席查询（Ad-hoc）的Spark SQL（比如不同时间段，不同地区，不同接种针数的查询）</li><li>应用于机器学习（数据挖掘）的MLlib （比如销量预测，用户画像，商品分类）</li><li>应用于图处理的GraphX （如PageRank、社交网络、航行优化）</li></ol></li><li>运行模式多样：可运行于独立的集群模式中，可运行于Hadoop中，也可运行于Amazon EC2等云环境中，并且可以访问HDFS、Cassandra、HBase、Hive等多种数据源 。</li></ul></br><h3 id="Spark概述"><a href="#Spark概述" class="headerlink" title="Spark概述"></a>Spark概述</h3><h4 id="Spark发展过程"><a href="#Spark发展过程" class="headerlink" title="Spark发展过程"></a>Spark发展过程</h4><p>Spark版本发布过程</p><ul><li>2009年由加州大学伯克利分校开始编写最初的源代码；</li><li>2012年2月发布0.6.0版本</li><li>2013年6月进入Apache孵化器项目（2014年2月成为Apache顶级项目）</li><li>2014年5月低Spark1.0.0发布</li><li>2016年7月Spark2.0.0正式发布</li><li>2020年6月Spark3.0.0正式发布</li></ul></br><h4 id="Spark应用趋势"><a href="#Spark应用趋势" class="headerlink" title="Spark应用趋势"></a>Spark应用趋势</h4><img src='https://pic.imgdb.cn/item/64ff24cf661c6c8e549103f4.jpg' width = "600" height = "auto"  align=center /><p>​     Spark如今已吸引了国内外各大公司的注意，如腾讯、淘宝、百度、亚马逊等公司均不同程度地使用了Spark来构建大数据分析应用，并应用到实际的生产环境中</p><img src='https://pic.imgdb.cn/item/64ff2514661c6c8e549131e6.jpg' width = "600" height = "auto"  align=center /></br><h4 id="Spark与Hadoop的对比"><a href="#Spark与Hadoop的对比" class="headerlink" title="Spark与Hadoop的对比"></a>Spark与Hadoop的对比</h4><table><thead><tr><th align="center"><strong>Hadoop</strong></th><th align="center"><strong>Spark</strong></th></tr></thead><tbody><tr><td align="center">数据存储结构：磁盘HDFS文件系统的split</td><td align="center">使用内存构建弹性分布式数据集RDD对数据进行运算和cache</td></tr><tr><td align="center">编程范式：Map + Reduce</td><td align="center">DAG: Transformation + Action</td></tr><tr><td align="center">计算中间结果落到磁盘，IO及序列化、反序列化代价大</td><td align="center">计算中间结果在内存中维护存取速度比磁盘高几个数量级</td></tr><tr><td align="center">Task以进程的方式维护，需要数秒时间才能启动任务</td><td align="center">Task以线程的方式维护对于小数据集读取能够达到亚秒级的延迟</td></tr></tbody></table><h1 id="二、生态技术"><a href="#二、生态技术" class="headerlink" title="二、生态技术"></a>二、生态技术</h1><h2 id="Spark生态圈-组成成分"><a href="#Spark生态圈-组成成分" class="headerlink" title="Spark生态圈 &gt;&gt; 组成成分"></a>Spark生态圈 &gt;&gt; 组成成分</h2><img src='https://pic.imgdb.cn/item/64ff2576661c6c8e54914553.jpg' width = "600" height = "auto"  align=center /><h2 id="Spark生态圈-组件简介"><a href="#Spark生态圈-组件简介" class="headerlink" title="Spark生态圈  &gt;&gt;  组件简介"></a>Spark生态圈  &gt;&gt;  组件简介</h2><p>（不是四大组件之一）Spark Core ：用于通用分布式数据处理的引擎，包含了Spark最基本、最核心的功能和基本分布式算子。     </p><p>Spark core的基本功能有任务调度、内存管理、故障恢复以及和存储系统的交互。</p><p><strong>四大组件：</strong></p><ul><li>Spark SQL ： 用于分布式结构化数据的SQL查询与分析，支持SQL函数和HiveQL</li><li>Spark Streaming ：用于处理流数据的分布式流处理框架，它将数据流以时间片为单位进行分割，能够以较小的时间间隔对流初级进行处理，从严格意义上说是一个准实时处理系统。 Spark Streaming支持不同数据源导入。</li><li>MLlib ：是一个分布式机器学习库。在Spark平台上对一些常用的机器学习算法进行了分布式实现，包括：分类、回归、聚类、决策树等等。</li><li>GraphX ：是一个分布式图处理框架，在Spark上实现了大规模图计算的功能，提供了对图计算和图挖掘的各种接口。</li></ul><h2 id="Spark生态圈-应用场景"><a href="#Spark生态圈-应用场景" class="headerlink" title="Spark生态圈  &gt;&gt;  应用场景"></a>Spark生态圈  &gt;&gt;  应用场景</h2><table><thead><tr><th align="center"><strong>应用场景</strong></th><th align="center"><strong>时间跨度</strong></th><th align="center"><strong>其他框架</strong></th><th align="center"><strong>Spark生态系统中的组件</strong></th></tr></thead><tbody><tr><td align="center">复杂的批量数据处理</td><td align="center">小时级</td><td align="center">MapReduce、Hive</td><td align="center">Spark</td></tr><tr><td align="center">基于历史数据的交互式查询</td><td align="center">分钟级、秒级</td><td align="center">Impala、Dremel、Drill</td><td align="center">Spark SQL</td></tr><tr><td align="center">基于实时数据流的数据处理</td><td align="center">毫秒、秒级</td><td align="center">Storm、S4</td><td align="center">Spark Streaming</td></tr><tr><td align="center">基于历史数据的数据挖掘</td><td align="center">-</td><td align="center">Mahout</td><td align="center">MLlib</td></tr><tr><td align="center">图结构数据的处理</td><td align="center">-</td><td align="center">Pregel、Hama</td><td align="center">GraphX</td></tr></tbody></table><p>​       在特定的使用场景下，Spark提供的解决方案不一定是最优，比如在实时数据流处理中，相比于Spark Streaming，Strom的实时性更强、时间切片更小，但Spark模块间的数据可以无缝结合，因此Spark生态系统可以为大数据的处理、分析提供一站式解决方案。</p><p><strong>Spark最常见的三种应用场景</strong></p><p>离线场景：可以以时间为维度，几年的数据集，或者以业务为维度，某个领域的大数据集等，这种数据我们一般叫做离线数据，或者冷数据。</p><p>实时场景：网站埋点、实时从前端页面传输过来的数据、业务系统或物理硬件实时传输过来的数据、硬件信号或者图像数据等，需要实时去计算处理并且返回结果的数据。</p><p>数据科学场景：能够处理来自传感器或金融系统的流数据以及机器学习任务，且Spark将数据集缓存在内存中的能力大大加快了迭代数据处理速度，使得Spark成为实现迭代的MapReduce算法的理想处理引擎。</p></br><ul><li>保险行业：通过使用Spark的机器学习功能来处理和分析所有索赔，优化索赔报销流程。</li><li>医疗保健：使用Spark Core，Streaming和SQL构建病人护理系统。</li><li>零售业：使用Spark分析销售点数据和优惠券使用情况。</li><li>银行业：使用机器学习模型来预测某些金融产品的零售×××的资料。</li><li>科学研究：通过时间，深度，地理分析地震事件来预测未来的事件。</li><li>投资银行：分析日内股价以预测未来的价格走势。</li><li>地理空间分析：按时间和地理分析Uber旅行，以预测未来的需求和定价。</li><li>Twitter情绪分析：分析大量的推文，以确定特定组织和产品的积极，消极或中立的情绪。航空公司：建立预测航空旅行延误的模型。</li></ul></br><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><ol><li><strong>Spark的优点有那些？</strong></li><li><strong>简要说明Spark的组件及各自作用？</strong></li><li><strong>有了Spark 是不是可以替代Hadoop了？</strong></li></ol><p>存储替代不了 只替代了mr计算</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;Spark是一个高速、通用大数据计算处理引擎。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习一下" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0%E4%B8%80%E4%B8%8B/"/>
-    
-    
-    <category term="数据集群" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E9%9B%86%E7%BE%A4/"/>
-    
-    <category term="Spark" scheme="http://example.com/tags/Spark/"/>
     
   </entry>
   
