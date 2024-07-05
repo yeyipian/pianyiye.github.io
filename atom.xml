@@ -6,7 +6,7 @@
   <link href="http://yeyipian.top/atom.xml" rel="self"/>
   
   <link href="http://yeyipian.top/"/>
-  <updated>2024-06-09T16:14:11.772Z</updated>
+  <updated>2024-07-05T07:43:15.432Z</updated>
   <id>http://yeyipian.top/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>zhoubao7</title>
+    <link href="http://yeyipian.top/2024/07/05/zhoubao7/"/>
+    <id>http://yeyipian.top/2024/07/05/zhoubao7/</id>
+    <published>2024-07-05T07:43:15.000Z</published>
+    <updated>2024-07-05T07:43:15.432Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>周报#6</title>
@@ -335,9 +348,9 @@
     
     <category term="编程" scheme="http://yeyipian.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="可视化" scheme="http://yeyipian.top/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
-    
     <category term="Superset" scheme="http://yeyipian.top/tags/Superset/"/>
+    
+    <category term="可视化" scheme="http://yeyipian.top/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
     
   </entry>
   
@@ -410,9 +423,9 @@
     
     <category term="编程" scheme="http://yeyipian.top/tags/%E7%BC%96%E7%A8%8B/"/>
     
-    <category term="Docker" scheme="http://yeyipian.top/tags/Docker/"/>
-    
     <category term="可视化" scheme="http://yeyipian.top/tags/%E5%8F%AF%E8%A7%86%E5%8C%96/"/>
+    
+    <category term="Docker" scheme="http://yeyipian.top/tags/Docker/"/>
     
   </entry>
   
@@ -434,29 +447,6 @@
     
     
     <category term="小米妙想" scheme="http://yeyipian.top/tags/%E5%B0%8F%E7%B1%B3%E5%A6%99%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MongoDB</title>
-    <link href="http://yeyipian.top/2023/10/10/MongoDB%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85/"/>
-    <id>http://yeyipian.top/2023/10/10/MongoDB%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85/</id>
-    <published>2023-10-10T10:01:36.000Z</published>
-    <updated>2024-03-12T11:04:07.937Z</updated>
-    
-    <content type="html"><![CDATA[<p>MongoDB的下载及安装</p><span id="more"></span><h1 id="1、首先mongoDB的官网下载地址："><a href="#1、首先mongoDB的官网下载地址：" class="headerlink" title="1、首先mongoDB的官网下载地址："></a>1、首先mongoDB的官网下载地址：</h1><p><a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></p><img src='https://pic.imgdb.cn/item/653f8126c458853aefe13df6.jpg' width = "600" height = "auto"  align=center /><p>其中，<code>Package</code>选择<code>Zip</code>格式</p><h1 id="2、进行解压如图"><a href="#2、进行解压如图" class="headerlink" title="2、进行解压如图"></a>2、进行解压如图</h1><img src='https://pic.imgdb.cn/item/653f82cfc458853aefe54a9d.jpg' width = "600" height = "auto"  align=center /><h1 id="3-新建文件"><a href="#3-新建文件" class="headerlink" title="3.新建文件"></a>3.新建文件</h1><p>新建<strong>data</strong>、<strong>log</strong>文件夹，log文件夹写下再新建一个<strong>MongoDB.log</strong> 文件</p><p>外层解压跟bin 同级别新建mongo.config 配置文件并写入以下内容(注意路径的更换)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dbpath=D:\mongodb-win32-x86_64-windows-4.4.25\data #数据库路径</span><br><span class="line">logpath=D:\mongodb-win32-x86_64-windows-4.4.25\log\MongoDB.log #日志输出文件路径</span><br><span class="line">#logappend=true #错误日志采用追加模式</span><br><span class="line">#journal=true #启用日志文件，默认启用</span><br><span class="line">#quiet=true #这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false</span><br><span class="line">port=27017 #端口号默认为27017</span><br></pre></td></tr></table></figure><h1 id="4-操作命令提示符"><a href="#4-操作命令提示符" class="headerlink" title="4.操作命令提示符"></a>4.操作命令提示符</h1><p>通过管理员身份打开命令提示符，注意跳转到bin目录</p><p>输入以下指令</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;D:\mongodb-win32-x86_64-windows-<span class="number">4</span>.<span class="number">4</span>.<span class="number">25</span>\bin\mongod.exe&quot; --dbpath &quot;D:\mongodb-win32-x86_64-windows-<span class="number">4</span>.<span class="number">4</span>.<span class="number">25</span>\data&quot; --logpath &quot;D:\mongodb-win32-x86_64-windows-<span class="number">4</span>.<span class="number">4</span>.<span class="number">25</span>\log\MongoDB.log&quot; --install --serviceName &quot;MongoDB&quot; --logappend --directoryperdb   </span><br></pre></td></tr></table></figure><p>然后打开浏览器输入<code> localhost:27017</code> 看看就会有下图</p><img src='https://pic.imgdb.cn/item/653f840fc458853aefe84452.jpg' width = "600" height = "auto"  align=center /><p>在服务中可以看到MongoDB已经启动</p><img src='https://pic.imgdb.cn/item/653f8453c458853aefe8e06c.jpg' width = "600" height = "auto"  align=center /><h1 id="5-添加环境变量"><a href="#5-添加环境变量" class="headerlink" title="5.添加环境变量"></a>5.添加环境变量</h1><p>将<code>D:\mongodb-win32-x86_64-windows-4.4.25\bin</code>添加至环境变量</p><img src='https://pic.imgdb.cn/item/653f84d9c458853aefea16b7.jpg' width = "600" height = "auto"  align=center /><h1 id="6-检验"><a href="#6-检验" class="headerlink" title="6.检验"></a>6.检验</h1><p>在命令提示符输入<code>mongo</code> 能够进入，基本完成安装配置操作。</p><img src='https://pic.imgdb.cn/item/653f8512c458853aefea9979.jpg' width = "600" height = "auto"  align=center /><h1 id="7-常用命令"><a href="#7-常用命令" class="headerlink" title="7.常用命令"></a>7.常用命令</h1><p>NET START MongoDB<br>NET stop MongoDB (关闭服务)<br>mongod –remove<br>use admin<br>db.createUser({user: ‘root’, pwd: ‘123456’, roles: [‘root’]})<br>db.auth(‘root’, ‘123456’)</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;MongoDB的下载及安装&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习一下" scheme="http://yeyipian.top/categories/%E5%AD%A6%E4%B9%A0%E4%B8%80%E4%B8%8B/"/>
-    
-    
-    <category term="编程" scheme="http://yeyipian.top/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-    <category term="MongoDB" scheme="http://yeyipian.top/tags/MongoDB/"/>
     
   </entry>
   
